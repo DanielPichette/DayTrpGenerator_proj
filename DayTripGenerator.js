@@ -22,60 +22,63 @@ let foodOptions = ["5 Star Gormet Resturant", "Authentic Street Food", "Vending 
 let finalTripItinerary = [];
 
 //ranndom selection tool//
-
 function randomArrayValue(array) {
     let randomValue = Math.floor(Math.random() * array.length);
     return array[randomValue]
 }
 
-//choosing another random selection
-function redoEntireTrip(){
-    console.log(randomArrayValue(formsOftransportation))
-    console.log(randomArrayValue(ListOfDestinations))
-    console.log(randomArrayValue(formsOfEntertainment))
-    console.log(randomArrayValue(foodOptions))
+//variable tools for choosing another random selection
+let redoEntireTrip= randomArrayValue(formsOftransportation)+ 
+randomArrayValue(ListOfDestinations)+
+randomArrayValue(formsOfEntertainment)+
+randomArrayValue(foodOptions);
 
-}
-function differentDestination(){
-    console.log(randomArrayValue(ListOfDestinations))
-}
-function differentFoodOption(){
-    console.log(randomArrayValue(foodOptions))
-}
+let differentDestination =  randomArrayValue(ListOfDestinations)
 
-function differentEntertainment (){
-    console.log(randomArrayValue(formsOfEntertainment))
-}
+let differentFoodOption = randomArrayValue(foodOptions)
 
-function differentTransportation (){
-    console.log(randomArrayValue(formsOftransportation))
-}
+let differentEntertainment = randomArrayValue(formsOfEntertainment)
 
-
-
-//Reselecting a selection
-
+let differentTransportation = randomArrayValue(formsOftransportation)
 
 
 //Page Opening
 let pagestartup = prompt("would you like a randomly generated day trip?");
 
-if (pagestartup === "yes"){
+switch(pagestartup){
+    case "yes":
     console.log("GREAT! here is what your trip looks like so far.")
     console.log(randomArrayValue(formsOftransportation)) + console.log(randomArrayValue(ListOfDestinations)) + console.log(randomArrayValue(formsOfEntertainment)) + console.log(randomArrayValue(foodOptions));
+    break;
 }
 
 let initialReaction = prompt("how does that trip look so far? good?");
 
-if(initialReaction === "yes" || "great" || "good!"){
-    console.log("fantastic! here is the final trip itinerary! Have a geat time! :D");
-}
-else if(initialReaction === "no" || "bad"){
-    console.log(initialReaction)
+switch(initialReaction){
+    case "yes" :
+        console.log("fantastic! here is the final trip itinerary! Have a geat time! :D")
+        break;
+
+    case "great":
+            console.log("fantastic! here is the final trip itinerary! Have a geat time! :D")
+            break;
+    case "good":
+    console.log("fantastic! here is the final trip itinerary! Have a geat time! :D")
+    break;
+
+    case "bad":
     console.log("oh no! what would you like to change about the trip?");
     console.log("The Transportation?");
     console.log("The location?");
     console.log("The Activitie?");
     console.log("The Food?");
+    break;
 
+    case "no":
+    console.log("oh no! what would you like to change about the trip?");
+    console.log("The Transportation?");
+    console.log("The location?");
+    console.log("The Activitie?");
+    console.log("The Food?");
+    break;
 }
