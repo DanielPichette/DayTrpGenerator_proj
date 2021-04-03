@@ -19,7 +19,11 @@ let ListOfDestinations = ["Great Wall of China","Cudahay Wisconsin","Machu Piccu
 let formsOftransportation = ["Private Jet","Personal Driver", "walking","bus", "jetpack"];
 let formsOfEntertainment = ["concert", "Funeral", "Cooking Class", "Clubbing", "Street Fair", "sight seeing"];
 let foodOptions = ["5 Star Gormet Resturant", "Authentic Street Food", "Vending Machine snack", "Sleep", "Mcdonalds"]
+let initialRandomTrip = [];
 let finalTripItinerary = [];
+
+let yes = "yes" || "great" || "good" | "fantastic"
+let no = "no" || "bad" || "awful" | "terrible"
 
 //ranndom selection tool//
 function randomArrayValue(array) {
@@ -27,13 +31,14 @@ function randomArrayValue(array) {
     return array[randomValue]
 }
 
+
 //variable tools for choosing another random selection
 let redoEntireTrip= randomArrayValue(formsOftransportation)+ 
 randomArrayValue(ListOfDestinations)+
 randomArrayValue(formsOfEntertainment)+
 randomArrayValue(foodOptions);
 
-let differentDestination =  randomArrayValue(ListOfDestinations)
+let differentDestination =  randomArrayValue(ListOfDestinations) 
 
 let differentFoodOption = randomArrayValue(foodOptions)
 
@@ -46,39 +51,50 @@ let differentTransportation = randomArrayValue(formsOftransportation)
 let pagestartup = prompt("would you like a randomly generated day trip?");
 
 switch(pagestartup){
-    case "yes":
+    case yes:
     console.log("GREAT! here is what your trip looks like so far.")
-    console.log(randomArrayValue(formsOftransportation)) + console.log(randomArrayValue(ListOfDestinations)) + console.log(randomArrayValue(formsOfEntertainment)) + console.log(randomArrayValue(foodOptions));
+    initialRandomTrip.splice(0,1,(randomArrayValue(formsOftransportation)))
+    initialRandomTrip.splice(1,1,(randomArrayValue(ListOfDestinations)))
+    initialRandomTrip.splice(2,1,(randomArrayValue(formsOfEntertainment)))
+    initialRandomTrip.splice(3,1,(randomArrayValue(foodOptions)))
+    console.log(initialRandomTrip);
     break;
 }
 
 let initialReaction = prompt("how does that trip look so far? good?");
 
 switch(initialReaction){
-    case "yes" :
+    case yes :
         console.log("fantastic! here is the final trip itinerary! Have a geat time! :D")
+        console.log(initialRandomTrip)
         break;
+    case no :
+        console.log("oh no! lets go over the trip and decide what we want to change.");
+        //Request to change Trip
+        let letsChangeTheTransportation = prompt("do you want to change the transportation")
+        console.log("do you want to change the mode of Transportation?")
+            switch (letsChangeTheTransportation) {
+                case (letsChangeTheTransportation === yes) :
+                finalTripItinerary.splice(0,1,(randomArrayValue(formsOftransportation)))
+                break;
+                case "no" :
+                console.log("Great!well keep that mode of transportion")
+                finalTripItinerary.splice(0,1,(initialRandomTrip[0]))
+                break;
+                let letsChangeTheTransportation = prompt("do you want to change the transportation")
+                console.log("do you want to change the mode of Transportation?")
+                    switch (letsChangeTheTransportation) {
+                        case (letsChangeTheTransportation === yes) :
+                        finalTripItinerary.splice(0,1,(randomArrayValue(formsOftransportation)))
+                        break;
+                        case "no" :
+                        console.log("Great!well keep that mode of transportion")
+                        finalTripItinerary.splice(0,1,(initialRandomTrip[0]))
+                        break;
+    }
 
-    case "great":
-            console.log("fantastic! here is the final trip itinerary! Have a geat time! :D")
-            break;
-    case "good":
-    console.log("fantastic! here is the final trip itinerary! Have a geat time! :D")
-    break;
-
-    case "bad":
-    console.log("oh no! what would you like to change about the trip?");
-    console.log("The Transportation?");
-    console.log("The location?");
-    console.log("The Activitie?");
-    console.log("The Food?");
-    break;
-
-    case "no":
-    console.log("oh no! what would you like to change about the trip?");
-    console.log("The Transportation?");
-    console.log("The location?");
-    console.log("The Activitie?");
-    console.log("The Food?");
+    console.log(" here is your final trip itinerary")
+    console.log(finalTripItinerary)
     break;
 }
+
