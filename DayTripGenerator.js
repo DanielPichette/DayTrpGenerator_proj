@@ -60,7 +60,6 @@ switch(pagestartup){
     console.log(initialRandomTrip);
     break;
 }
-
 let initialReaction = prompt("how does that trip look so far? good?");
 
 switch(initialReaction){
@@ -71,30 +70,53 @@ switch(initialReaction){
     case no :
         console.log("oh no! lets go over the trip and decide what we want to change.");
         //Request to change Trip
-        let letsChangeTheTransportation = prompt("do you want to change the transportation")
-        console.log("do you want to change the mode of Transportation?")
+        let letsChangeTheTransportation = prompt("do you want to change the transportation");
+        console.log("do you want to change the mode of Transportation?");
             switch (letsChangeTheTransportation) {
-                case (letsChangeTheTransportation === yes) :
+                case yes :
                 finalTripItinerary.splice(0,1,(randomArrayValue(formsOftransportation)))
                 break;
-                case "no" :
-                console.log("Great!well keep that mode of transportion")
+                case no :
+                console.log("Great! we'll keep that mode of transportion")
                 finalTripItinerary.splice(0,1,(initialRandomTrip[0]))
                 break;
-                let letsChangeTheTransportation = prompt("do you want to change the transportation")
-                console.log("do you want to change the mode of Transportation?")
-                    switch (letsChangeTheTransportation) {
-                        case (letsChangeTheTransportation === yes) :
-                        finalTripItinerary.splice(0,1,(randomArrayValue(formsOftransportation)))
-                        break;
-                        case "no" :
-                        console.log("Great!well keep that mode of transportion")
-                        finalTripItinerary.splice(0,1,(initialRandomTrip[0]))
-                        break;
-    }
+            }
+        let letsChangeTheLocation = prompt("do you want to change the Location?");
+        console.log("do you want to change the location?");
+            switch (letsChangeTheLocation) {
+                case yes :
+                finalTripItinerary.splice(1,1,(randomArrayValue(ListOfDestinations)))
+                break;
+                case no :
+                console.log("Great!well keep the Destination")
+                finalTripItinerary.splice(1,1,(ListOfDestinations[1]))
+                break;
+            } 
+            let letsChangeActivity = prompt("do you want to change the Activity?");
+        console.log("do you want to change the Activity?");
+            switch (letsChangeActivity) {
+                case yes :
+                finalTripItinerary.splice(2,1,(randomArrayValue(formsOfEntertainment)))
+                break;
+                case no :
+                console.log("Great!well keep the Activity")
+                finalTripItinerary.splice(2,1,(initialRandomTrip[2]))
+                break;
+            } 
+        let letsChangeTheFoodOption = prompt("do you want to change the Food Option?");
+        console.log("do you want to change the FoodOption?");
+            switch (letsChangeTheFoodOption) {
+                case yes :
+                finalTripItinerary.splice(3,1,(randomArrayValue(foodOptions)))
+                break;
+                case no :
+                console.log("Great!well keep the Food Option")
+                finalTripItinerary.splice(3,1,(initialRandomTrip[3]))
+                break;
+            } 
 
-    console.log(" here is your final trip itinerary")
-    console.log(finalTripItinerary)
-    break;
+console.log("your original trip was"+initialRandomTrip+". your new trip is"+finalTripItinerary+".")
+console.log(" here is your final trip itinerary")
+console.log(finalTripItinerary)
+break;
 }
-
